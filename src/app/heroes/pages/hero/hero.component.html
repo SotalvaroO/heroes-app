@@ -1,1 +1,27 @@
-<p>hero works!</p>
+<div class="overlay" *ngIf="!hero; else divHero">
+    <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #divHero>
+    <div class="grid">
+        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+            <h1>{{hero.superhero}} <small>- {{hero.alter_ego}} </small></h1>
+            <mat-divider></mat-divider>
+            <br>
+            <img class="hero-img" [src]="hero | imageConverter" alt="Hero">
+        </div>
+        <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6">
+            <h1>{{hero.publisher}}</h1>
+            <mat-divider></mat-divider>
+
+            <mat-list>
+                <mat-list-item>{{hero.first_appearance}}</mat-list-item>
+                <mat-list-item>{{hero.characters}}</mat-list-item>
+                <mat-list-item>{{hero.publisher}}</mat-list-item>
+                <mat-list-item>{{hero.alter_ego}}</mat-list-item>
+            </mat-list>
+            <br>
+            <button mat-button color="warn" (click)="returToList()">Regresar</button>
+        </div>
+    </div>
+</ng-template>
